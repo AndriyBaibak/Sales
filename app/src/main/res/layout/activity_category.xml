@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <GridLayout
+        android:id="@+id/categoryGrid"
+        android:layout_width="335dp"
+        android:layout_height="447dp"
+        android:layout_gravity="center"
+        android:columnCount="3"
+        android:orientation="horizontal">
+
+        <Button android:text="Category 1"
+                />
+
+        <Button android:text="Category 2" />
+
+        <Button android:text="Category 3" />
+
+        <Button android:text="Category 4" />
+
+        <Button android:text="Category 5" />
+
+        <Button android:text="Category 6" />
+
+        <Button android:text="Category 7" />
+
+        <Button android:text="Category 8" />
+
+        <Button android:text="Category 9" />
+
+        <Button android:text="Category 10" />
+
+        <Button android:text="Category 11" />
+
+        <Button android:text="Category 12" />
+    </GridLayout>
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:text="Some tes">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_cart"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_chart_areaspline"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_facebook_messenger"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>
