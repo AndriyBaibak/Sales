@@ -6,11 +6,13 @@ package com.example.baibaka.salers.domain;
 
 public class Address {
 
+    private Integer id;
     private String addrName;
     private String addrInfo;
 
 
-    public Address(String addrName, String addrInfo) {
+    public Address(Integer id, String addrName, String addrInfo) {
+        this.id = id;
         this.addrName = addrName;
         this.addrInfo = addrInfo;
     }
@@ -29,5 +31,13 @@ public class Address {
 
     public void setAddrInfo(String addrInfo) {
         this.addrInfo = addrInfo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

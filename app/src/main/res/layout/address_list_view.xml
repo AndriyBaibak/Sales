@@ -25,11 +25,13 @@
             android:text="AddrInformation"/>
     </LinearLayout>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageview_icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_gravity="right"
+        android:background="white"
         android:src="@drawable/ic_create_black_24dp" />
 
 

@@ -1,6 +1,8 @@
 package com.example.baibaka.salers.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.baibaka.salers.R;
+import com.example.baibaka.salers.activity.CategoryActivity;
 import com.example.baibaka.salers.domain.Address;
 
 /**
@@ -49,15 +53,30 @@ public class AddressAdapter extends ArrayAdapter<Address> {
         TextView addrName = (TextView)row.findViewById(R.id.addrName);
         TextView addrInfo = (TextView)row.findViewById(R.id.addrInfo);
 
-        ImageView imageView =(ImageView)row.findViewById(R.id.imageview_icon);
-
-        Address address = mData[position];
+        final Address address = mData[position];
 
         addrName.setText(address.getAddrName());
         addrInfo.setText(address.getAddrInfo());
 
+        ImageButton imageButton =(ImageButton) row.findViewById(R.id.imageview_icon);
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("AddressID", address.getId());
+
+                Intent intent = new Intent(getContext(), CategoryActivity.class);
+                intent.putExtra("Address", bundle);
+
+                mContext.startActivity(intent);
+            }
+        });
+
         int resId = mContext.getResources().getIdentifier("ic_create_black_24dp","drawable",mContext.getPackageName());
-        imageView.setImageResource(resId);
+        imageButton.setImageResource(resId);
+
+
 
         return row;
     }
