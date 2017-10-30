@@ -58,10 +58,6 @@ public class AddressesActivity extends BaseActivity {
 
         http.getAddresses(callback);
 
-
-
-
-
         recyclerView = (RecyclerView) findViewById(R.id.addresses_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
