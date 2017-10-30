@@ -1,5 +1,7 @@
 package com.example.baibaka.salers.domain;
 
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -7,16 +9,13 @@ import com.google.gson.annotations.SerializedName;
  * Created by baibak.a on 06.10.2017.
  */
 
-public class Address {
+public class Address  {
 
     @SerializedName("id")
-    @Expose
     private Integer id;
     @SerializedName("addrName")
-    @Expose
     private String addrName;
     @SerializedName("addrInfo")
-    @Expose
     private String addrInfo;
 
 

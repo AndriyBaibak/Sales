@@ -1,6 +1,7 @@
 package com.example.baibaka.salers.http;
 
 import com.example.baibaka.salers.domain.Address;
+import com.example.baibaka.salers.viewmodel.AddressViewModel;
 
 import java.util.List;
 
@@ -10,6 +11,6 @@ import java.util.List;
 
 public interface IHttp {
 
-    void getAddresses(Http.Callback<List<Address>> callback);
+    void getAddresses(Http.Callback<List<AddressViewModel>> callback);
 
 }

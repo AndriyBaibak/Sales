@@ -16,10 +16,11 @@
         android:layout_marginBottom="10dp"
         android:layout_gravity="center"/>
 
-    <ListView
-        android:id="@+id/addresses"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/addresses_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbars="vertical"
         android:layout_gravity="center"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="45dp" />

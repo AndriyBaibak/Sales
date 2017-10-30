@@ -2,6 +2,7 @@ package com.example.baibaka.salers.di;
 
 import com.example.baibaka.salers.http.Http;
 import com.example.baibaka.salers.http.IHttp;
+import com.example.baibaka.salers.http.MockHttp;
 
 import javax.inject.Singleton;
 
@@ -14,6 +15,6 @@ public class NetModule {
     @Singleton
     @Provides
     public IHttp getHttp(){
-        return new Http();
+        return new MockHttp();
     }
 }
