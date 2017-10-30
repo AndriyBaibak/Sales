@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sales="http://schemas.android.com/apk/res-auto">
 
     <data class="AddressDataBinding">
         <variable
             name="viewModel"
             type="com.example.baibaka.salers.viewmodel.AddressViewModel" />
+
+        <variable
+            name="handler"
+            type="com.example.baibaka.salers.ImgClickHandler" />
     </data>
 
   <LinearLayout
@@ -41,7 +46,9 @@
         android:layout_weight="1"
         android:layout_gravity="right"
         android:background="#ffffff"
-        android:src="@drawable/ic_create_black_24dp" />
+        sales:imgSrc="@{viewModel.imgScrId}"
+        android:onClick="@{(v) -> handler.onImgClick()}"
+        />
 
 
 </LinearLayout>

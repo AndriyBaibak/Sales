@@ -18,6 +18,11 @@ public class Http implements IHttp {
 
     }
 
+    @Override
+    public void getAddressCategories(Address address, Callback<List<AddressViewModel>> callback) {
+
+    }
+
     public interface Callback<T> {
         void onData(T str);
     }
