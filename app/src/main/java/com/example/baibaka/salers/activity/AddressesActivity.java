@@ -44,7 +44,6 @@ public class AddressesActivity extends BaseActivity {
         recyclerView = (RecyclerView) findViewById(R.id.addresses_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-
         recyclerView.setAdapter(new RecyclerAddressViewAdapter(this,list));
     }
 

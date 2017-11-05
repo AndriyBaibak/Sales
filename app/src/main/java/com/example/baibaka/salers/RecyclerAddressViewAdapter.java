@@ -1,11 +1,16 @@
 package com.example.baibaka.salers;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+
+import com.example.baibaka.salers.activity.CategoryActivity;
 import com.example.baibaka.salers.databinding.AddressDataBinding;
 import com.example.baibaka.salers.viewmodel.AddressViewModel;
 
@@ -44,8 +49,11 @@ public class RecyclerAddressViewAdapter extends RecyclerView.Adapter<ViewHolder>
         final AddressDataBinding dataBinding = holder.getDataBinding();
         dataBinding.setHandler(new ImgClickHandler() {
             @Override
-            public void onImgClick() {
-
+            public void onImgClick(Object address) {
+                AddressViewModel model = (AddressViewModel) address;
+                Intent myIntent = new Intent(mContext, CategoryActivity.class);
+                myIntent.putExtra("addrID", model.getId() );
+                mContext.startActivity(myIntent);
             }
         });
     }

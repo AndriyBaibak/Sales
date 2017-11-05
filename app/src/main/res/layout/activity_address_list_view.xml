@@ -47,7 +47,7 @@
         android:layout_gravity="right"
         android:background="#ffffff"
         sales:imgSrc="@{viewModel.imgScrId}"
-        android:onClick="@{(v) -> handler.onImgClick()}"
+        android:onClick="@{(v) -> handler.onImgClick(viewModel)}"
         />
 
 

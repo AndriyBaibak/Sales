@@ -3,6 +3,7 @@ package com.example.baibaka.salers.http;
 
 import com.example.baibaka.salers.domain.Address;
 import com.example.baibaka.salers.viewmodel.AddressViewModel;
+import com.example.baibaka.salers.viewmodel.CategoryViewModel;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Http implements IHttp {
     }
 
     @Override
-    public void getAddressCategories(Address address, Callback<List<AddressViewModel>> callback) {
+    public void getAddressCategories(Integer addrID, Callback<List<CategoryViewModel>> callback) {
 
     }
 

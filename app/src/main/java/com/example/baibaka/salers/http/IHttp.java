@@ -14,6 +14,6 @@ public interface IHttp {
 
     void getAddresses(Http.Callback<List<AddressViewModel>> callback);
 
-    void getAddressCategories(Address address, Http.Callback<List<CategoryViewModel>> callback);
+    void getAddressCategories(Integer addrID, Http.Callback<List<CategoryViewModel>> callback);
 
 }

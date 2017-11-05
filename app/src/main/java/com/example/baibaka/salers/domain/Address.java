@@ -18,6 +18,9 @@ public class Address  {
     @SerializedName("addrInfo")
     private String addrInfo;
 
+    public Address(){
+
+    }
 
     public Address(Integer id, String addrName, String addrInfo) {
         this.id = id;
