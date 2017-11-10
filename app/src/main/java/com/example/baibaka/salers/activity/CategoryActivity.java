@@ -41,8 +41,6 @@ public class CategoryActivity  extends BaseActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-
-
         CustomApp app = (CustomApp) getApplicationContext();
         app.getNetComponent().inject(this);
 
@@ -54,7 +52,7 @@ public class CategoryActivity  extends BaseActivity{
         });
 
         recyclerView = (RecyclerView) findViewById(R.id.category_recycler_view);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         recyclerView.setAdapter(new RecyclerCategoryViewAdapter(this,list));
 
     }

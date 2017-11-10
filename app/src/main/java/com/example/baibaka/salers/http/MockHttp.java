@@ -3,7 +3,9 @@ package com.example.baibaka.salers.http;
 import com.example.baibaka.salers.domain.Address;
 import com.example.baibaka.salers.viewmodel.AddressViewModel;
 import com.example.baibaka.salers.viewmodel.CategoryViewModel;
+import com.example.baibaka.salers.viewmodel.ProductViewModel;
 import com.google.gson.Gson;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,16 +17,23 @@ import java.util.List;
 public class MockHttp implements IHttp {
 
     @Override
-    public void getAddresses(Http.Callback<List<AddressViewModel>> callback) {
+    public void getAddresses(Callback<List<AddressViewModel>> callback) {
         Gson gson = new Gson();
         AddressViewModel[] a = gson.fromJson(jsonAddresses, AddressViewModel[].class);
         callback.onData(Arrays.asList(a));
     }
 
     @Override
-    public void getAddressCategories(Integer addrID, Http.Callback<List<CategoryViewModel>> callback) {
+    public void getAddressCategories(Integer addrID, Callback<List<CategoryViewModel>> callback) {
         Gson gson = new Gson();
         CategoryViewModel[] a = gson.fromJson(jsonAddressCategories, CategoryViewModel[].class);
+        callback.onData(Arrays.asList(a));
+    }
+
+    @Override
+    public void getCategoryProducts(Integer categoryID, Callback<List<ProductViewModel>> callback) {
+        Gson gson = new Gson();
+        ProductViewModel[] a = gson.fromJson(jsonCategoryProduct, ProductViewModel[].class);
         callback.onData(Arrays.asList(a));
     }
 
@@ -46,6 +55,18 @@ public class MockHttp implements IHttp {
                     "{\"id\":10,\"name\":\"Категория 10\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=3493010\" ,\"itemCount\": 10},\n" +
                     "{\"id\":12,\"name\":\"Категория 111\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=2697723\" ,\"itemCount\": 11}\n" +
             "]";
+
+    private String jsonCategoryProduct =
+            "[" +
+                    "{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50},\n" +
+             "]";
+
+
+   /* public interface List<T> {
+        void onData(List<T> str);
+    }
+*/
 }
 
 

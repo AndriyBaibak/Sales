@@ -62,4 +62,8 @@ public class RecyclerAddressViewAdapter extends RecyclerView.Adapter<ViewHolder>
     public int getItemCount() {
         return mList.size();
     }
+
+    public void setmList(List<AddressViewModel> mList) {
+        this.mList = mList;
+    }
 }

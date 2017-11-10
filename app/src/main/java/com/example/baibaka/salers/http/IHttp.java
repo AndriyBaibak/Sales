@@ -3,6 +3,7 @@ package com.example.baibaka.salers.http;
 import com.example.baibaka.salers.domain.Address;
 import com.example.baibaka.salers.viewmodel.AddressViewModel;
 import com.example.baibaka.salers.viewmodel.CategoryViewModel;
+import com.example.baibaka.salers.viewmodel.ProductViewModel;
 
 import java.util.List;
 
@@ -12,8 +13,14 @@ import java.util.List;
 
 public interface IHttp {
 
-    void getAddresses(Http.Callback<List<AddressViewModel>> callback);
+    void getAddresses(Callback<List<AddressViewModel>> callback);
 
-    void getAddressCategories(Integer addrID, Http.Callback<List<CategoryViewModel>> callback);
+    void getAddressCategories(Integer addrID, Callback<List<CategoryViewModel>> callback);
 
+    void getCategoryProducts(Integer categoryID,Callback<List<ProductViewModel>> callback );
+
+
+    interface Callback<T> {
+        void onData(T str);
+    }
 }

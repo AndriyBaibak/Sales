@@ -4,6 +4,7 @@ package com.example.baibaka.salers.http;
 import com.example.baibaka.salers.domain.Address;
 import com.example.baibaka.salers.viewmodel.AddressViewModel;
 import com.example.baibaka.salers.viewmodel.CategoryViewModel;
+import com.example.baibaka.salers.viewmodel.ProductViewModel;
 
 import java.util.List;
 
@@ -24,7 +25,9 @@ public class Http implements IHttp {
 
     }
 
-    public interface Callback<T> {
-        void onData(T str);
+    @Override
+    public void getCategoryProducts(Integer categoryID, Callback<List<ProductViewModel>> callback) {
+
     }
+
 }
