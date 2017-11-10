@@ -5,10 +5,13 @@ import com.example.baibaka.salers.viewmodel.AddressViewModel;
 import com.example.baibaka.salers.viewmodel.CategoryViewModel;
 import com.example.baibaka.salers.viewmodel.ProductViewModel;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.pnikosis.materialishprogress.ProgressWheel;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by baibak.a on 19.10.2017.
@@ -31,10 +34,10 @@ public class MockHttp implements IHttp {
     }
 
     @Override
-    public void getCategoryProducts(Integer categoryID, Callback<List<ProductViewModel>> callback) {
+    public void getCategoryProducts(Integer categoryID, Callback<Map<Integer,List<ProductViewModel>>> callback) {
         Gson gson = new Gson();
-        ProductViewModel[] a = gson.fromJson(jsonCategoryProduct, ProductViewModel[].class);
-        callback.onData(Arrays.asList(a));
+        List<ProductViewModel> a = gson.fromJson(jsonCategoryProduct, new TypeToken<Map<Integer, List<ProductViewModel>>>() {}.getType());
+        callback.onData(a);
     }
 
     private String jsonAddresses = "[{\"id\":1,\"addrName\":\"Магазин 1\",\"addrInfo\":\"Краснова 36\" },\n" +

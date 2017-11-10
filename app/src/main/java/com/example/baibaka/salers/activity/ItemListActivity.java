@@ -10,10 +10,13 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import com.example.baibaka.salers.R;
+import com.example.baibaka.salers.http.IHttp;
 import com.example.baibaka.salers.viewmodel.ProductViewModel;
 
 import java.util.HashMap;
 import java.util.List;
+
+import javax.inject.Inject;
 
 /**
  * Created by baibak.a on 06.11.2017.
@@ -27,10 +30,21 @@ public class ItemListActivity extends FragmentActivity {
     ViewPager pager;
     PagerAdapter pagerAdapter;
 
+
+    @Inject
+    public IHttp http;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_page);
+
+        http.getCategoryProducts(getIntent().getExtras().getInt("categoryID", 0), new IHttp.Callback<List<ProductViewModel>>() {
+            @Override
+            public void onData(List<ProductViewModel> str) {
+
+            }
+        });
 
         pager = (ViewPager) findViewById(R.id.pager);
         pagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
@@ -70,7 +84,7 @@ public class ItemListActivity extends FragmentActivity {
 
         @Override
         public int getCount() {
-            return PAGE_COUNT;
+            return products.size();
         }
         @Override
         public CharSequence getPageTitle(int position) {

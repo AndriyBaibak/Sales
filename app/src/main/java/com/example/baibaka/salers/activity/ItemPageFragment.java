@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.example.baibaka.salers.R;
 import com.example.baibaka.salers.viewmodel.CategoryViewModel;
 import com.example.baibaka.salers.viewmodel.ProductViewModel;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.HashMap;
 import java.util.List;
@@ -43,8 +45,9 @@ public class ItemPageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        list = getArguments().getString(ARGUMENT_PAGE_NUMBER);
+        list = new Gson().fromJson(getArguments().getString(ARGUMENT_PAGE_NUMBER),new TypeToken<List<ProductViewModel>>() {}.getType());
 
+        Log.i("On create", list.toString());
      /*   Random rnd = new Random();
         backColor = Color.argb(40, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));*/
     }
@@ -71,7 +74,4 @@ public class ItemPageFragment extends Fragment {
         return view;
     }
 
-    public void setProducts(HashMap<Integer, List<ProductViewModel>> products) {
-        this.products = products;
-    }
 }
