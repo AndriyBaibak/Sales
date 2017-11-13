@@ -6,10 +6,8 @@ import com.example.baibaka.salers.viewmodel.CategoryViewModel;
 import com.example.baibaka.salers.viewmodel.ProductViewModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.pnikosis.materialishprogress.ProgressWheel;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,10 +31,10 @@ public class MockHttp implements IHttp {
         callback.onData(Arrays.asList(a));
     }
 
-    @Override
-    public void getCategoryProducts(Integer categoryID, Callback<Map<Integer,List<ProductViewModel>>> callback) {
+@Override
+    public void getCategoryProducts(Integer categoryID, Callback<Map<String,List<ProductViewModel>>> callback) {
         Gson gson = new Gson();
-        List<ProductViewModel> a = gson.fromJson(jsonCategoryProduct, new TypeToken<Map<Integer, List<ProductViewModel>>>() {}.getType());
+        Map<String,List <ProductViewModel>> a = gson.fromJson(jsonCategoryProduct, new TypeToken<Map<String, List<ProductViewModel>>>() {}.getType());
         callback.onData(a);
     }
 
@@ -60,10 +58,12 @@ public class MockHttp implements IHttp {
             "]";
 
     private String jsonCategoryProduct =
-            "[" +
+
+            "{\"category1\":[" +
                     "{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
-                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50},\n" +
-             "]";
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}\n" +
+            "]}";
+
 
 
    /* public interface List<T> {

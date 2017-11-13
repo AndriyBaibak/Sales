@@ -28,7 +28,7 @@ public class Http implements IHttp {
     }
 
     @Override
-    public void getCategoryProducts(Integer categoryID, Callback<Map<Integer,List<ProductViewModel>>> callback) {
+    public void getCategoryProducts(Integer categoryID, Callback<Map<String,List<ProductViewModel>>> callback) {
 
     }
 

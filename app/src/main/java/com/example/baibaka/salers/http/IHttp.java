@@ -19,7 +19,9 @@ public interface IHttp {
 
     void getAddressCategories(Integer addrID, Callback<List<CategoryViewModel>> callback);
 
-    void getCategoryProducts(Integer categoryID,Callback<Map<Integer,List<ProductViewModel>>> callback );
+
+    void getCategoryProducts(Integer categoryID,Callback<Map<String,List<ProductViewModel>>> callback );
+
 
 
     interface Callback<T> {
