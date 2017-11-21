@@ -1,6 +1,6 @@
 package com.example.baibaka.salers.di;
 
-import com.example.baibaka.salers.http.Http;
+
 import com.example.baibaka.salers.http.IHttp;
 import com.example.baibaka.salers.http.MockHttp;
 

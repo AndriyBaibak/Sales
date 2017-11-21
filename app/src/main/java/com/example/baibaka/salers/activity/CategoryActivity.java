@@ -27,7 +27,7 @@ import javax.inject.Inject;
  * Created by baibak.a on 08.10.2017.
  */
 
-public class CategoryActivity  extends BaseActivity{
+public class CategoryActivity  extends AppCompatActivity{
 
     private RecyclerView recyclerView;
 

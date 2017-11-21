@@ -30,13 +30,10 @@ public class ItemPageFragment extends Fragment {
 
     private List<ProductViewModel> list;
 
- /*   int pageNumber;
-    int backColor;*/
-
     static ItemPageFragment newInstance(int position, List<ProductViewModel> list) {
         ItemPageFragment pageFragment = new ItemPageFragment();
         Bundle arguments = new Bundle();
-        arguments.putString("list",new Gson().toJson(list));
+        arguments.putString("list", new Gson().toJson(list));
         pageFragment.setArguments(arguments);
         return pageFragment;
     }
@@ -45,11 +42,10 @@ public class ItemPageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        list = new Gson().fromJson(getArguments().getString(ARGUMENT_PAGE_NUMBER),new TypeToken<List<ProductViewModel>>() {}.getType());
+        list = new Gson().fromJson(getArguments().getString("list"),new TypeToken<List<ProductViewModel>>() {}.getType());
 
         Log.i("On create", list.toString());
-     /*   Random rnd = new Random();
-        backColor = Color.argb(40, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));*/
+
     }
 
     @Override

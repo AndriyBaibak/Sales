@@ -32,9 +32,9 @@ public class MockHttp implements IHttp {
     }
 
 @Override
-    public void getCategoryProducts(Integer categoryID, Callback<Map<String,List<ProductViewModel>>> callback) {
+    public void getCategoryProducts(Callback<List<Map<String,List<ProductViewModel>>>> callback) {
         Gson gson = new Gson();
-        Map<String,List <ProductViewModel>> a = gson.fromJson(jsonCategoryProduct, new TypeToken<Map<String, List<ProductViewModel>>>() {}.getType());
+        List<Map<String,List <ProductViewModel>>> a = gson.fromJson(jsonCategoryProduct, new TypeToken<List<Map<String, List<ProductViewModel>>>>() {}.getType());
         callback.onData(a);
     }
 
@@ -44,25 +44,38 @@ public class MockHttp implements IHttp {
 
     private String jsonAddressCategories =
             "[" +
-                    "{\"id\":1,\"name\":\"Категория 1\",\"imageUrl\":\"https://pbs.twimg.com/profile_images/446522135721164800/pdVA44as.jpeg\" ,\"itemCount\": 1},\n" +
-                    "{\"id\":2,\"name\":\"Категория 2\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=5925506 \" ,\"itemCount\": 2},\n" +
-                    "{\"id\":3,\"name\":\"Категория 3\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=5925516\" ,\"itemCount\": 3},\n" +
-                    "{\"id\":4,\"name\":\"Категория 4\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=6179579\" ,\"itemCount\": 4},\n" +
-                    "{\"id\":5,\"name\":\"Категория 5\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=2697700\" ,\"itemCount\": 5},\n" +
-                    "{\"id\":6,\"name\":\"Категория 6\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=3236298\" ,\"itemCount\": 6},\n" +
-                    "{\"id\":7,\"name\":\"Категория 7\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=3236297\" ,\"itemCount\": 7},\n" +
-                    "{\"id\":8,\"name\":\"Категория 8\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=4142457\" ,\"itemCount\": 8},\n" +
-                    "{\"id\":9,\"name\":\"Категория 9\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=3363076\" ,\"itemCount\": 9},\n" +
-                    "{\"id\":10,\"name\":\"Категория 10\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=3493010\" ,\"itemCount\": 10},\n" +
-                    "{\"id\":12,\"name\":\"Категория 111\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=2697723\" ,\"itemCount\": 11}\n" +
+                    "{\"id\":1,\"name\":\"Категория 1\",\"imageUrl\":\"https://pbs.twimg.com/profile_images/446522135721164800/pdVA44as.jpeg\" ,\"itemCount\": 1,\"products\":[{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}]},\n" +
+                    "{\"id\":2,\"name\":\"Категория 2\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=5925506 \" ,\"itemCount\": 2,\"products\":[{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}]},\n" +
+                    "{\"id\":3,\"name\":\"Категория 3\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=5925516\" ,\"itemCount\": 3,\"products\":[{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}]},\n" +
+                    "{\"id\":4,\"name\":\"Категория 4\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=6179579\" ,\"itemCount\": 4,\"products\":[{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}]},\n" +
+                    "{\"id\":5,\"name\":\"Категория 5\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=2697700\" ,\"itemCount\": 5,\"products\":[{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}]},\n" +
+                    "{\"id\":6,\"name\":\"Категория 6\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=3236298\" ,\"itemCount\": 6,\"products\":[{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}]},\n" +
+                    "{\"id\":7,\"name\":\"Категория 7\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=3236297\" ,\"itemCount\": 7,\"products\":[{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}]},\n" +
+                    "{\"id\":8,\"name\":\"Категория 8\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=4142457\" ,\"itemCount\": 8,\"products\":[{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}]},\n" +
+                    "{\"id\":9,\"name\":\"Категория 9\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=3363076\" ,\"itemCount\": 9,\"products\":[{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}]},\n" +
+                    "{\"id\":10,\"name\":\"Категория 10\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=3493010\" ,\"itemCount\": 10,\"products\":[{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}]},\n" +
+                    "{\"id\":12,\"name\":\"Категория 111\",\"imageUrl\":\"http://bo.asnova.com:800/anthillservice/getfiles?id=2697723\" ,\"itemCount\": 11,\"products\":[{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}]}\n" +
             "]";
 
     private String jsonCategoryProduct =
 
-            "{\"category1\":[" +
+            "[{\"category1\":[" +
                     "{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
                     "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}\n" +
-            "]}";
+            "]},{\"category1\":[{\"id\":1,\"name\":\"Tide 1\",\"imageUrl\":\"-\" ,\"productInfo\": \"Велика пачка 3 кг\",\"price\":23.50},\n" +
+                    "{\"id\":2,\"name\":\"Ariel 2\",\"imageUrl\":\"-\" ,\"productInfo\": \"Маленька пачка 0.5 кг\",\"price\":3.50}\n" +
+                    "]}]";
 
 
 

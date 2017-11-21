@@ -14,6 +14,7 @@ import com.example.baibaka.salers.databinding.CategoryDataBinding;
 import com.example.baibaka.salers.domain.Category;
 import com.example.baibaka.salers.viewmodel.AddressViewModel;
 import com.example.baibaka.salers.viewmodel.CategoryViewModel;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class RecyclerCategoryViewAdapter extends RecyclerView.Adapter<CategoryVi
             public void onImgClick(Object category) {
                 CategoryViewModel model = (CategoryViewModel) category;
                 Intent myIntent = new Intent(mContext, ItemListActivity.class);
-                myIntent.putExtra("categoryID", model.getId() );
+                myIntent.putExtra("list", new Gson().toJson(mList));
                 mContext.startActivity(myIntent);
             }
         });

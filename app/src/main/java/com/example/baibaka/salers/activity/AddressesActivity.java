@@ -2,6 +2,7 @@ package com.example.baibaka.salers.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +24,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class AddressesActivity extends BaseActivity{
+public class AddressesActivity extends AppCompatActivity {
 
     @Inject
     public IHttp http;
